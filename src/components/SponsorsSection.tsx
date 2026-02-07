@@ -1,0 +1,82 @@
+import { motion } from 'framer-motion';
+import { useLanguage } from '@/contexts/LanguageContext';
+
+const sponsors = [
+  {
+    name: 'GSB Sarvajnik Ganeshotsava Samiti Wadala',
+    nameMarathi: 'GSB सार्वजनिक गणेशोत्सव समिती वडाळा',
+  },
+  {
+    name: 'Shri Siddhivinayak Ganapati Nyas Prabhadevi',
+    nameMarathi: 'श्री सिद्धिविनायक गणपती न्यास प्रभादेवी',
+  },
+  {
+    name: 'Brihan Mumbai Mahanagar Palika',
+    nameMarathi: 'बृहन्मुंबई महानगरपालिका',
+  },
+  {
+    name: 'Mumbai Police',
+    nameMarathi: 'मुंबई पोलीस',
+  },
+  {
+    name: 'Shivaji Park Management',
+    nameMarathi: 'शिवाजी पार्क व्यवस्थापन',
+  },
+  {
+    name: 'Local Beach Committees',
+    nameMarathi: 'स्थानिक समुद्रकिनारा समित्या',
+  },
+];
+
+export const SponsorsSection = () => {
+  const { t } = useLanguage();
+
+  return (
+    <section id="sponsors" className="py-20 bg-muted/50">
+      <div className="container mx-auto px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
+        >
+          <h2 className="font-heading font-bold text-3xl md:text-4xl text-foreground mb-4">
+            {t('OUR SPONSORS & PARTNERS', 'आमचे प्रायोजक आणि भागीदार')}
+          </h2>
+          <div className="w-24 h-1 bg-gold mx-auto rounded-full mb-4" />
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            {t(
+              'We are grateful to our sponsors and partners who support our mission of saving lives.',
+              'आमच्या जीव वाचवण्याच्या मिशनला पाठिंबा देणाऱ्या आमच्या प्रायोजक आणि भागीदारांचे आम्ही आभारी आहोत.'
+            )}
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+          {sponsors.map((sponsor, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="group"
+            >
+              <div className="bg-card rounded-xl p-6 h-32 flex items-center justify-center border border-border transition-all duration-300 hover:shadow-gold hover:border-gold/50 cursor-pointer">
+                <div className="text-center">
+                  <div className="w-16 h-16 mx-auto mb-2 rounded-full bg-muted flex items-center justify-center text-2xl font-heading font-bold text-muted-foreground group-hover:text-gold group-hover:bg-gold/10 transition-colors">
+                    {sponsor.name.charAt(0)}
+                  </div>
+                  <p className="text-xs text-muted-foreground group-hover:text-foreground transition-colors line-clamp-2">
+                    {t(sponsor.name, sponsor.nameMarathi)}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
