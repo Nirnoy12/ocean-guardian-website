@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Calendar, MapPin, Clock } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -133,10 +134,11 @@ export const EventsSection = () => {
                 </div>
 
                 <Button
+                  asChild
                   size="lg"
                   className="bg-gold hover:bg-gold-dark text-ocean-deep font-heading font-bold rounded-full"
                 >
-                  {t('Join Us as Volunteer', 'स्वयंसेवक म्हणून सामील व्हा')}
+                  <Link to="/contact">{t('Join Us as Volunteer', 'स्वयंसेवक म्हणून सामील व्हा')}</Link>
                 </Button>
               </div>
             </div>

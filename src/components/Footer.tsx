@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
-import { 
-  ArrowUp, 
+import { Link } from 'react-router-dom';
+import {
+  ArrowUp,
   Phone,
   Mail,
   MapPin,
@@ -9,12 +10,13 @@ import { useLanguage } from '@/contexts/LanguageContext';
 
 const footerLinks = {
   quickLinks: [
-    { en: 'Home', mr: 'मुख्यपृष्ठ', href: '#home' },
-    { en: 'About Us', mr: 'आमच्याबद्दल', href: '#about' },
-    { en: 'Services', mr: 'सेवा', href: '#services' },
-    { en: 'Donation', mr: 'देणगी', href: '#donation' },
-    { en: 'Gallery', mr: 'गॅलरी', href: '#gallery' },
-    { en: 'Contact', mr: 'संपर्क', href: '#contact' },
+    { en: 'Home', mr: 'मुख्यपृष्ठ', href: '/' },
+    { en: 'About Us', mr: 'आमच्याबद्दल', href: '/about' },
+    { en: 'Services', mr: 'सेवा', href: '/services' },
+    { en: 'Donation', mr: 'देणगी', href: '/donation' },
+    { en: 'Membership', mr: 'सदस्यत्व', href: '/membership' },
+    { en: 'Gallery', mr: 'गॅलरी', href: '/gallery' },
+    { en: 'Contact', mr: 'संपर्क', href: '/contact' },
   ],
   legal: [
     { en: 'Privacy Policy', mr: 'गोपनीयता धोरण', href: '/privacy' },
@@ -113,12 +115,12 @@ export const Footer = () => {
             <ul className="space-y-3">
               {footerLinks.quickLinks.map((link, index) => (
                 <li key={index}>
-                  <a
-                    href={link.href}
+                  <Link
+                    to={link.href}
                     className="text-white/70 hover:text-gold transition-colors text-sm"
                   >
                     {t(link.en, link.mr)}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -137,12 +139,12 @@ export const Footer = () => {
             <ul className="space-y-3">
               {footerLinks.legal.map((link, index) => (
                 <li key={index}>
-                  <a
-                    href={link.href}
+                  <Link
+                    to={link.href}
                     className="text-white/70 hover:text-gold transition-colors text-sm"
                   >
                     {t(link.en, link.mr)}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -162,7 +164,7 @@ export const Footer = () => {
               <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
                 <p className="text-white/70 text-sm">
-                  14/A Navprabhat Chambers, Ranade Rd, Dadar West, Mumbai 400028
+                  14/A, Navprabhat Chambers, 2nd Floor, Ranade Road, Dadar (W), Mumbai 400028
                 </p>
               </div>
               <div className="flex items-center gap-3">
@@ -187,7 +189,7 @@ export const Footer = () => {
             © 2025 Jaljiv Rakshak NGO. {t('All Rights Reserved.', 'सर्व हक्क राखीव.')}
           </p>
           <p className="text-white/40 text-xs">
-            {t('Designed with ❤️ for saving lives', 'जीव वाचवण्यासाठी ❤️ ने डिझाइन केले')}
+            Designed By Site Invention
           </p>
         </div>
       </div>

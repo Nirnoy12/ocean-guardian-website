@@ -1,30 +1,42 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
 
+function SponsorLogo({ src, alt, fallbackLetter }: { src: string; alt: string; fallbackLetter: string }) {
+  const [error, setError] = useState(false);
+  if (error) {
+    return (
+      <span className="w-full h-full flex items-center justify-center text-2xl font-heading font-bold text-muted-foreground group-hover:text-gold">
+        {fallbackLetter}
+      </span>
+    );
+  }
+  return (
+    <img
+      src={src}
+      alt={alt}
+      className="w-full h-full object-contain p-1"
+      onError={() => setError(true)}
+    />
+  );
+}
+
+// Add logo files in public/sponsors/ to show sponsor logos
 const sponsors = [
   {
-    name: 'GSB Sarvajnik Ganeshotsava Samiti Wadala',
-    nameMarathi: 'GSB सार्वजनिक गणेशोत्सव समिती वडाळा',
+    name: 'GSB Sarvajanik Ganeshotsava Samiti, Wadala',
+    nameMarathi: 'GSB सार्वजनिक गणेशोत्सव समिती, वडाळा',
+    logo: '/sponsors/gsb.png',
   },
   {
-    name: 'Shri Siddhivinayak Ganapati Nyas Prabhadevi',
-    nameMarathi: 'श्री सिद्धिविनायक गणपती न्यास प्रभादेवी',
+    name: 'Shri Siddhivinayak Ganapati Nyas, Prabhadevi',
+    nameMarathi: 'श्री सिद्धिविनायक गणपती न्यास, प्रभादेवी',
+    logo: '/sponsors/siddhivinayak.png',
   },
   {
-    name: 'Brihan Mumbai Mahanagar Palika',
-    nameMarathi: 'बृहन्मुंबई महानगरपालिका',
-  },
-  {
-    name: 'Mumbai Police',
-    nameMarathi: 'मुंबई पोलीस',
-  },
-  {
-    name: 'Shivaji Park Management',
-    nameMarathi: 'शिवाजी पार्क व्यवस्थापन',
-  },
-  {
-    name: 'Local Beach Committees',
-    nameMarathi: 'स्थानिक समुद्रकिनारा समित्या',
+    name: 'Brihan Mumbai Mahanagar Palika, Shivaji Park Shakha',
+    nameMarathi: 'बृहन्मुंबई महानगरपालिका, शिवाजी पार्क शाखा',
+    logo: '/sponsors/bmc.png',
   },
 ];
 
@@ -53,7 +65,7 @@ export const SponsorsSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
           {sponsors.map((sponsor, index) => (
             <motion.div
               key={index}
@@ -63,10 +75,10 @@ export const SponsorsSection = () => {
               transition={{ delay: index * 0.1 }}
               className="group"
             >
-              <div className="bg-card rounded-xl p-6 h-32 flex items-center justify-center border border-border transition-all duration-300 hover:shadow-gold hover:border-gold/50 cursor-pointer">
-                <div className="text-center">
-                  <div className="w-16 h-16 mx-auto mb-2 rounded-full bg-muted flex items-center justify-center text-2xl font-heading font-bold text-muted-foreground group-hover:text-gold group-hover:bg-gold/10 transition-colors">
-                    {sponsor.name.charAt(0)}
+              <div className="bg-card rounded-xl p-6 min-h-[8rem] flex items-center justify-center border border-border transition-all duration-300 hover:shadow-gold hover:border-gold/50 cursor-pointer">
+                <div className="text-center w-full">
+                  <div className="w-16 h-16 mx-auto mb-2 flex items-center justify-center overflow-hidden bg-muted rounded-full group-hover:bg-gold/10 transition-colors">
+                    <SponsorLogo src={sponsor.logo} alt={sponsor.name} fallbackLetter={sponsor.name.charAt(0)} />
                   </div>
                   <p className="text-xs text-muted-foreground group-hover:text-foreground transition-colors line-clamp-2">
                     {t(sponsor.name, sponsor.nameMarathi)}

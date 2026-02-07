@@ -1,24 +1,28 @@
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { 
-  CreditCard, 
-  Banknote, 
-  FileText, 
-  Building2, 
+import {
+  CreditCard,
+  Banknote,
+  FileText,
+  Building2,
   Gift,
   MapPin,
   Phone,
   Mail,
   FileCheck,
-  Megaphone
+  Megaphone,
+  MessageCircle,
 } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
 const donationMethods = [
   { icon: CreditCard, label: 'Donate Online', labelMr: 'ऑनलाइन दान करा' },
-  { icon: Banknote, label: 'Cash', labelMr: 'रोख' },
-  { icon: FileText, label: 'Cheque/Draft', labelMr: 'चेक/ड्राफ्ट' },
-  { icon: Building2, label: 'NEFT', labelMr: 'NEFT' },
+  { icon: Banknote, label: 'Donate in Cash', labelMr: 'रोख दान करा' },
+  { icon: FileText, label: 'Donate in Cheque or Draft', labelMr: 'चेक किंवा ड्राफ्ट दान करा' },
+  { icon: Building2, label: 'Donate in NEFT (Bank to Bank)', labelMr: 'NEFT दान' },
   { icon: Gift, label: 'Non-Financial Support', labelMr: 'वस्तू मदत' },
 ];
 
@@ -75,10 +79,11 @@ export const ContactSection = () => {
             </div>
 
             <Button
+              asChild
               size="lg"
               className="w-full bg-gold hover:bg-gold-dark text-ocean-deep font-heading font-bold rounded-full pulse-glow"
             >
-              {t('Donate Now', 'आता दान करा')}
+              <Link to="/donation">{t('Donate Now', 'आता दान करा')}</Link>
             </Button>
           </motion.div>
 
@@ -105,23 +110,33 @@ export const ContactSection = () => {
                       {t('Office Address', 'कार्यालयाचा पत्ता')}
                     </p>
                     <p className="text-muted-foreground text-sm">
-                      14/A Navprabhat Chambers, Ranade Rd, Near Shivaji Park,
-                      Dadar West, Mumbai, Maharashtra 400028
+                      14/A, Navprabhat Chambers, 2nd Floor, Ranade Road, Dadar (W),
+                      Mumbai, Maharashtra, India-400028
                     </p>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Phone className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                    <p className="font-medium text-foreground">
-                      {t('Phone', 'फोन')}
+                <div className="space-y-2">
+                  <p className="font-medium text-foreground">{t('Phone', 'फोन')}</p>
+                  <div className="space-y-1 text-sm">
+                    <p className="text-muted-foreground">
+                      {t('Donations, Accounts, Membership:', 'देणगी, खाते, सदस्यत्व:')}{' '}
+                      <a href="tel:+917666766625" className="text-primary hover:underline">(+91) 7666 7666 25</a>
                     </p>
-                    <a href="tel:+917666766625" className="text-primary hover:underline">
-                      (+91) 7666 7666 25
-                    </a>
+                    <p className="text-muted-foreground">
+                      {t('General & Administration:', 'सामान्य आणि प्रशासन:')}{' '}
+                      <a href="tel:+919819029078" className="text-primary hover:underline">Sanjaykumar (+91) 9819 0290 78</a>,{' '}
+                      <a href="tel:+919833859902" className="text-primary hover:underline">Sandeep (+91) 9833 8599 02</a>
+                    </p>
+                    <p className="text-muted-foreground flex items-center gap-1">
+                      <MessageCircle className="w-4 h-4" /> WhatsApp:{' '}
+                      <a href="https://wa.me/917666766625" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">(+91) 7666 7666 25</a>
+                    </p>
+                    <p className="text-muted-foreground">
+                      {t('For Basic Swimming Coaching:', 'मूलभूत पोहणे कोचिंग:')}{' '}
+                      <a href="tel:+919324709962" className="text-primary hover:underline">Babu (+91) 9324 7099 62</a>,{' '}
+                      <a href="tel:+919930316162" className="text-primary hover:underline">Vijay (+91) 9930 3161 62</a>
+                    </p>
                   </div>
                 </div>
 
@@ -166,21 +181,66 @@ export const ContactSection = () => {
               <div className="flex items-center gap-3 mb-2">
                 <Megaphone className="w-6 h-6 text-gold" />
                 <h4 className="font-heading font-bold text-foreground">
-                  {t('Advertise Your Business', 'तुमचा व्यवसाय जाहीर करा')}
+                  {t('Get your Business Advertised on our Website', 'तुमचा व्यवसाय आमच्या वेबसाइटवर जाहीर करा')}
                 </h4>
               </div>
               <p className="text-muted-foreground text-sm mb-3">
                 {t(
-                  'Get your business advertised and support a noble cause.',
-                  'तुमचा व्यवसाय जाहीर करा आणि एका उदात्त कार्याला पाठिंबा द्या.'
+                  'For More Details, Kindly contact Rajkumar Bhatia',
+                  'अधिक माहितीसाठी कृपया राजकुमार भाटिया यांच्याशी संपर्क साधा'
                 )}
               </p>
               <p className="text-foreground font-medium">
-                {t('Contact:', 'संपर्क:')} Rajkumar Bhatia @ 
-                <a href="tel:+917666766625" className="text-primary hover:underline ml-1">
+                <a href="tel:+917666766625" className="text-primary hover:underline">
                   (+91) 7666 7666 25
                 </a>
               </p>
+            </motion.div>
+
+            {/* Feel Free to contact us - Form */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-card rounded-2xl p-8 shadow-card border border-border"
+            >
+              <h3 className="font-heading font-bold text-xl text-foreground mb-4">
+                {t('Feel Free to contact us', 'आमच्याशी संपर्क साधण्यास मोकळेपणाने')}
+              </h3>
+              <form
+                action="mailto:support@jaljivrakshakngo.org"
+                method="get"
+                encType="text/plain"
+                className="space-y-4"
+              >
+                <div>
+                  <Label htmlFor="contact-name">{t('Name', 'नाव')} *</Label>
+                  <Input id="contact-name" name="name" required className="mt-1" placeholder={t('Your name', 'तुमचे नाव')} />
+                </div>
+                <div>
+                  <Label htmlFor="contact-email">{t('Email', 'ईमेल')} *</Label>
+                  <Input id="contact-email" name="email" type="email" required className="mt-1" placeholder="email@example.com" />
+                </div>
+                <div>
+                  <Label htmlFor="contact-phone">{t('Phone No.', 'फोन नंबर')} *</Label>
+                  <Input id="contact-phone" name="phone" type="tel" required className="mt-1" placeholder="+91" />
+                </div>
+                <div>
+                  <Label>{t('Query type', 'प्रश्नाचा प्रकार')}</Label>
+                  <select
+                    name="subject"
+                    className="mt-1 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                  >
+                    <option value="General Enquiry">{t('General Enquiry', 'सामान्य चौकशी')}</option>
+                    <option value="For Basic Swimming Coaching">{t('For Basic Swimming Coaching', 'मूलभूत पोहणे कोचिंग')}</option>
+                    <option value="Donation">{t('Donation', 'देणगी')}</option>
+                    <option value="Membership">{t('Membership', 'सदस्यत्व')}</option>
+                  </select>
+                </div>
+                <Button type="submit" className="w-full rounded-full font-heading">
+                  {t('Send', 'पाठवा')}
+                </Button>
+              </form>
             </motion.div>
           </motion.div>
         </div>

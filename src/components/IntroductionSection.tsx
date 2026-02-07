@@ -9,13 +9,11 @@ export const IntroductionSection = () => {
   const { t, language } = useLanguage();
   const [isMarathiExpanded, setIsMarathiExpanded] = useState(false);
 
-  const englishText = `JALJIV RAKSHAK FOUNDATION (Regd.), MUMBAI is an NGO comprising of swimmers/lifeguards/volunteers who have swimming skills. It was formed in year 1998 to reduce and minimize water mishaps during Shri Ganapati Visarjan, Shri Devi Visarjan & New year and from 2014 onwards during all important festivals like Gudi Padva, Chhath, Holi as well on weekends during monsoon season.
+  const englishText = `JALJIV RAKSHAK FOUNDATION (Regd.), MUMBAI is an NGO comprising of swimmers/lifeguards/volunteers, etc. who have been co-ordinating with Traffic Control Branch (R.T.O.) MUMBAI for more than 25 years and in active co-ordination with Mumbai Police and Brihan Mumbai Mahanagar Palika (BMC) is providing Lifeguards for Ganesh immersion, Devi visarjan, Mahamanav Bharat Ratna Dr Babasaheb Ambedkar Mahaparinirvan din – 6th December, 31st December, New year celebrations, Haji Ali Darga Badi Raat, Ramzan Eid, etc. and for other Emergency Services. We provide "FREE OF COST" services on above occasions at various beaches of Mumbai. With an army of more than 400 volunteers (Lifeguards) stationed on shores putting in dedication of selfless service & hard work by standing in waters for 12–16 hours, are responsible for safety and security of general public and drowning incidences in particular.`;
 
-Since inception, this NGO has been working at Mumbai and Navi Mumbai beaches in co-ordination with Brihan Mumbai Muncipal Corporation (BMC) and Mumbai Police for Public Safety, providing our services absolutely free of cost. We provide proper infrastructure and training to all the lifeguards, equip them with life saving articles and other aids such as First Aid Kits, CPR Kits, Life Jackets, etc. for water rescues, provide drinking water and eatables without any expectation of returns whatsoever and sincerely strive for prevention and minimization of drowning incidences in particular.`;
+  const marathiText = `जलजीव रक्षक ही अधिकृत संघटना असून या मधील सदस्य गेली २५ वर्ष पेक्ष्या अधिक वर्षे मुंबई वाहतूक नियंत्रण शाखेच्या (R.T.O.) विद्यमानाने आणि मुंबई पोलीस, बृहन्मुंबई महानगरपालिके बरोबर सर्तक सहकार्य करत आहे. हि संस्था, जनहितारत, स्वयंसेवी करणारी असून, श्री गणेशमुर्ती विसर्जन (गणेशोत्सव), देवी विसर्जन (दसरा), महामानव भारतरत्न डॉ. बाबासाहेब आंबेडकर महापरीनिर्वाण दिन (६ डिसेंबर), नववर्ष स्वागत (३१ डिसेंबर), बडी रात व रमजान ईद साठी हाजी अली दर्गाह इत्यादी आणि इतर अत्यावश्यक प्रसंगी आम्ही मुंबईतील सर्व समुद्रकिनारी वर नमूद केलेल्या सण आणि उत्सवासाठी विनामूल्य सेवा देते.
 
-  const marathiText = `जलजीव रक्षक फाउंडेशन (नोंदणीकृत), मुंबई ही एक स्वयंसेवी संस्था आहे जी पोहणे कौशल्य असलेल्या जीवरक्षक/स्वयंसेवकांची बनलेली आहे. श्री गणपती विसर्जन, श्री देवी विसर्जन आणि नववर्षादरम्यान पाण्यातील अपघात कमी करण्यासाठी १९९८ मध्ये याची स्थापना करण्यात आली. २०१४ पासून गुढी पाडवा, छठ, होळी तसेच पावसाळ्यात शनिवार-रविवारी सर्व महत्त्वाच्या सणांदरम्यान सेवा दिली जाते.
-
-स्थापनेपासून, ही संस्था बृहन्मुंबई महानगरपालिका (BMC) आणि मुंबई पोलिसांच्या समन्वयाने मुंबई आणि नवी मुंबईच्या समुद्रकिनाऱ्यांवर सार्वजनिक सुरक्षेसाठी पूर्णपणे विनामूल्य सेवा देत आहे. आम्ही सर्व जीवरक्षकांना योग्य पायाभूत सुविधा आणि प्रशिक्षण प्रदान करतो, त्यांना जीव वाचवणारे साहित्य जसे की प्रथमोपचार किट, CPR किट, लाइफ जॅकेट इत्यादींनी सुसज्ज करतो आणि बुडण्याच्या घटना रोखण्यासाठी प्रामाणिक प्रयत्न करतो.`;
+जलजीव रक्षकच्या ताफ्यात ४०० हुन अधिक अधिकृत जलजीव सुरक्षा रक्षक आणि सभासद आहेत. हे सर्व सुरक्षा रक्षक आपल्या जीवाची पर्वा न करता, स्वतःच्या जबाबदारीवर १४-१६ तास समुद्राच्या पाण्यात उभे राहुन आलेल्या भाविकांना, सामान्य जनसमुदायाच्या सुरक्षिततेकरिता आणि समुद्राच्या पाण्यात बुडण्याचा विवीध दुर्घटना टाळण्या साठी कार्यरत असतात.`;
 
   return (
     <section id="about" className="py-20 bg-background">
@@ -57,7 +55,7 @@ Since inception, this NGO has been working at Mumbai and Navi Mumbai beaches in 
 
             <div className="prose prose-lg text-muted-foreground">
               <p className="leading-relaxed">
-                {language === 'en' ? englishText : englishText}
+                {language === 'en' ? englishText : marathiText}
               </p>
             </div>
 
