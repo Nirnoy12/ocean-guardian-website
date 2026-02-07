@@ -13,16 +13,17 @@ import { motion } from 'framer-motion';
 function HomeIntro() {
   const { t } = useLanguage();
   return (
-    <section className="py- bg-background">
+    <section className="py-10 bg-background">
       <div className="container mx-auto px-4 text-center">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8"
+          className="text-lg text-muted-foreground max-w-7xl mx-auto mb-6 "
         >
-          {t(
-            'Jaljiv Rakshak Foundation has been co-ordinating with R.T.O. Mumbai and Mumbai Police for over 25 years, providing FREE lifeguard services at Mumbai beaches during festivals and emergencies.',
+          {
+          t(
+            'JAL JIV RAKSHAK FOUNDATION (Regd.), MUMBAI is an NGO comprising of swimmers /lifeguards/volunteers, etc. who have been co-ordinating with Traffic Control Branch (R.T.O.) MUMBAI for more than 25 years and in active co-ordination with Mumbai Police and BrihanMumbai Mahanagerpallika (BMC) is providing Lifeguards for Ganesh immersion, Devi visarjan, Mahamanav Bharat Ratna Dr Babasaheb Ambedkar Mahaparinirvan din – 6th December, 31st December, New year celebrations, Haji – Ali Darga Badi Raat, Ramzan Eid, etc. and for other Emergency Services. We provide “FREE OF COST” services on above occasions at various beaches of Mumbai. With an army of more than 400 volunteers (Lifeguards) stationed on shores putting in dedication of selfless service & hard work by standing in waters for 12 – 16 hours, are responsible for safety and security of general public and drowning incidences in particular.',
             'जलजीव रक्षक फाउंडेशन २५+ वर्षे R.T.O. मुंबई आणि मुंबई पोलीस सह समन्वय साधून सणांदरम्यान आणि आणीबाणीत मुंबईच्या समुद्रकिनाऱ्यांवर मोफत जीवरक्षक सेवा देत आहे.'
           )}
         </motion.p>

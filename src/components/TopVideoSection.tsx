@@ -15,7 +15,7 @@ export function TopVideoSection() {
     <section 
       // CHANGED: Added 'mt-20' to push this section below the fixed navbar
       // CHANGED: Added 'shadow-md' for a subtle separation from the content below
-      className="relative w-full h-[40vh] min-h-[240px] overflow-hidden flex-shrink-0 mt-20 shadow-md"
+      className="relative w-full h-[40vh] min-h-[640px] flex-shrink-0 mt-20 shadow-md"
     >
       {useVideo ? (
         <video
