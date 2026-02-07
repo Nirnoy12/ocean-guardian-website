@@ -64,7 +64,7 @@ export const Navigation = () => {
                 <img
                   src={LOGO_SRC}
                   alt={t('Jaljiv Rakshak Foundation', 'जलजीव रक्षक फाउंडेशन')}
-                  className="h-12 w-auto max-w-[120px] object-contain"
+                  className="h-16 w-auto max-w-[120px] object-contain"
                   onError={() => setLogoError(true)}
                 />
               ) : (
@@ -73,10 +73,10 @@ export const Navigation = () => {
                 </div>
               )}
               <div className="hidden sm:block">
-                <p className="text-white font-heading font-bold text-sm leading-tight">
+                <p className="text-white font-heading font-bold text-xl leading-tight">
                   {t('Jaljiv Rakshak', 'जलजीव रक्षक')}
                 </p>
-                <p className="text-gold text-xs">
+                <p className="text-gold text-l">
                   {t('Foundation', 'फाउंडेशन')}
                 </p>
               </div>
