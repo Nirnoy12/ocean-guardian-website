@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { LanguageToggle } from './LanguageToggle';
+import beachImage from '@/assets/beach.jpg';
 
 const LOGO_SRC = '/logo.png';
 
@@ -27,9 +28,12 @@ function NavLink({
   onNavigate?: () => void;
 }) {
   const { t } = useLanguage();
+  
+  // CHANGED: 'text-sm' -> 'text-lg' for desktop
+  // CHANGED: Added 'text-lg' for mobile to match
   const className = isMobile
-    ? 'text-white/90 hover:text-gold transition-colors py-2 block'
-    : 'text-white/90 hover:text-gold transition-colors text-sm font-medium relative group';
+    ? 'text-white/90 hover:text-gold transition-colors py-2 block text-lg font-medium'
+    : 'text-white/90 hover:text-gold transition-colors text-lg font-medium relative group';
 
   return (
     <Link to={item.href} className={className} onClick={onNavigate}>
@@ -39,24 +43,46 @@ function NavLink({
   );
 }
 
-// CHANGED: Removed the transparent logic. The navbar is now always solid Ocean Deep.
-const NAV_SOLID = 'bg-ocean-deep shadow-lg py-2';
-
 export const Navigation = () => {
+  const location = useLocation();
+  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [logoError, setLogoError] = useState(false);
   const { t } = useLanguage();
+
+  const isHome = location.pathname === '/';
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const showSolidNav = !isHome || isScrolled;
 
   return (
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      // CHANGED: Fixed position, but always solid background for high contrast
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${NAV_SOLID}`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 h-20 flex items-center ${
+        showSolidNav ? 'shadow-lg' : 'py-4'
+      }`}
     >
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+      {/* Background Image Layer */}
+      {showSolidNav && (
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <img 
+            src={beachImage} 
+            alt="Navbar Background" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+        </div>
+      )}
+
+      {/* Content Container */}
+      <div className="container mx-auto px-8 w-full relative z-10">
+        <div className="flex items-center justify-between">
           {/* Logo */}
           <motion.div whileHover={{ scale: 1.02 }}>
             <Link to="/" className="flex items-center gap-3">
@@ -76,7 +102,7 @@ export const Navigation = () => {
                 <p className="text-white font-heading font-bold text-xl leading-tight">
                   {t('Jaljiv Rakshak', 'जलजीव रक्षक')}
                 </p>
-                <p className="text-gold text-l">
+                <p className="text-gold text-xl">
                   {t('Foundation', 'फाउंडेशन')}
                 </p>
               </div>
@@ -107,15 +133,20 @@ export const Navigation = () => {
           </button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu Dropdown */}
         {isMobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden mt-2 pb-4 border-t border-white/10 bg-ocean-deep"
+            className="lg:hidden absolute top-20 left-0 right-0 overflow-hidden"
           >
-            <div className="flex flex-col gap-3 pt-4 px-2">
+            <div className="absolute inset-0 z-0">
+                 <img src={beachImage} className="w-full h-full object-cover" alt="" />
+                 <div className="absolute inset-0 bg-black/90" />
+            </div>
+
+            <div className="relative z-10 flex flex-col gap-3 p-4 border-t border-white/10">
               {navItems.map((item) => (
                 <NavLink
                   key={item.href}

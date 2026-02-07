@@ -15,7 +15,7 @@ export const HeroSection = () => {
   ];
 
   return (
-    <section id="home" className="flex flex-col w-full mt-16">
+    <section id="home" className="flex flex-col w-full">
       
       {/* --- HERO BANNER WITH IMAGE BACKGROUND --- */}
       <div className="relative w-full h-[60vh] min-h-[500px] overflow-hidden">
