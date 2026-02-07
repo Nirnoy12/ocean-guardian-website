@@ -1,12 +1,11 @@
-import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { LanguageToggle } from './LanguageToggle';
-import beachImage from '@/assets/beach.jpg';
 
-const LOGO_SRC = '/logo.png';
+const LOGO_SRC = '/banner.jpg';
 
 const navItems = [
   { en: 'Home', mr: 'मुख्यपृष्ठ', href: '/' },
@@ -29,8 +28,7 @@ function NavLink({
 }) {
   const { t } = useLanguage();
   
-  // CHANGED: 'text-sm' -> 'text-lg' for desktop
-  // CHANGED: Added 'text-lg' for mobile to match
+  // Kept 'text-lg' as requested previously
   const className = isMobile
     ? 'text-white/90 hover:text-gold transition-colors py-2 block text-lg font-medium'
     : 'text-white/90 hover:text-gold transition-colors text-lg font-medium relative group';
@@ -44,44 +42,20 @@ function NavLink({
 }
 
 export const Navigation = () => {
-  const location = useLocation();
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [logoError, setLogoError] = useState(false);
   const { t } = useLanguage();
-
-  const isHome = location.pathname === '/';
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const showSolidNav = !isHome || isScrolled;
 
   return (
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 h-20 flex items-center ${
-        showSolidNav ? 'shadow-lg' : 'py-4'
-      }`}
+      // CHANGED: Removed image logic, set solid 'bg-ocean-deep', kept 'h-20' for large text
+      className="fixed top-0 left-0 right-0 z-50 bg-ocean-deep shadow-lg h-20 flex items-center transition-all duration-300"
     >
-      {/* Background Image Layer */}
-      {showSolidNav && (
-        <div className="absolute inset-0 z-0 overflow-hidden">
-          <img 
-            src={beachImage} 
-            alt="Navbar Background" 
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
-        </div>
-      )}
-
       {/* Content Container */}
-      <div className="container mx-auto px-8 w-full relative z-10">
+      <div className="container mx-auto px-4 w-full relative z-10">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <motion.div whileHover={{ scale: 1.02 }}>
@@ -139,14 +113,10 @@ export const Navigation = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden absolute top-20 left-0 right-0 overflow-hidden"
+            // CHANGED: Solid background for mobile menu too
+            className="lg:hidden absolute top-20 left-0 right-0 bg-ocean-deep border-t border-white/10 overflow-hidden shadow-xl"
           >
-            <div className="absolute inset-0 z-0">
-                 <img src={beachImage} className="w-full h-full object-cover" alt="" />
-                 <div className="absolute inset-0 bg-black/90" />
-            </div>
-
-            <div className="relative z-10 flex flex-col gap-3 p-4 border-t border-white/10">
+            <div className="flex flex-col gap-3 p-4">
               {navItems.map((item) => (
                 <NavLink
                   key={item.href}
