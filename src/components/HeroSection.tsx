@@ -19,7 +19,7 @@ const SLIDER_IMAGES = [
   },
   {
     id: 3,
-    src: "/rescue.png", // Replace with different image if available
+    src: "/lg.png", // Replace with different image if available
     alt: "Slide 3"
   },
   {
@@ -29,12 +29,12 @@ const SLIDER_IMAGES = [
   },
   {
     id: 5,
-    src: "/community.png",
+    src: "/who.png",
     alt: "Slide 5"
   },
   {
     id: 6,
-    src: "/who.png",
+    src: "/community.png",
     alt: "Slide 6"
   },
 ];
