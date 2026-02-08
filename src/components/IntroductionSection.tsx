@@ -33,7 +33,7 @@ export const IntroductionSection = () => {
           <img
             src="/three.png"
             alt="Our Foundation"
-            className="w-full h-[300px] md:h-[380px] object-cover rounded-2xl shadow-lg border border-blue-300"
+            className="w-full h-full md:h-[700px] object-cover rounded-2xl shadow-lg border border-blue-300"
           />
         </motion.div>
 
