@@ -17,8 +17,8 @@ export const EventsSection = () => {
   const { t } = useLanguage();
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
-  // Ganapati Visarjan 2025 date (Anant Chaturdashi)
-  const eventDate = new Date('2025-09-06T00:00:00');
+  // UPDATED DATE: September 23, 2026
+  const eventDate = new Date('2026-09-23T00:00:00');
 
   useEffect(() => {
     const calculateTimeLeft = () => {
@@ -100,13 +100,13 @@ export const EventsSection = () => {
               {/* Event Details */}
               <div className="p-8 flex flex-col justify-center">
                 <h3 className="font-heading font-bold text-2xl md:text-3xl text-white mb-4">
-                  {t('Ganapati Visarjan 2025', 'गणपती विसर्जन २०२५')}
+                  {t('Ganapati Visarjan 2026', 'गणपती विसर्जन २०२६')}
                 </h3>
 
                 <div className="space-y-3 mb-6">
                   <div className="flex items-center gap-3 text-white/80">
                     <Calendar className="w-5 h-5 text-gold" />
-                    <span>{t('September 6-7, 2025', '६-७ सप्टेंबर, २०२५')}</span>
+                    <span>{t('September 23, 2026', '२३ सप्टेंबर, २०२६')}</span>
                   </div>
                   <div className="flex items-center gap-3 text-white/80">
                     <MapPin className="w-5 h-5 text-gold" />
@@ -144,16 +144,6 @@ export const EventsSection = () => {
             </div>
           </div>
         </motion.div>
-      </div>
-
-      {/* Wave Pattern Bottom */}
-      <div className="absolute bottom-0 left-0 right-0 h-20 overflow-hidden">
-        <svg viewBox="0 0 1440 100" preserveAspectRatio="none" className="w-full h-full">
-          <path
-            fill="hsl(var(--background))"
-            d="M0,50 C360,100 720,0 1080,50 C1260,75 1380,25 1440,50 L1440,100 L0,100 Z"
-          />
-        </svg>
       </div>
     </section>
   );
