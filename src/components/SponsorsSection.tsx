@@ -26,18 +26,53 @@ const sponsors = [
   {
     name: 'GSB Sarvajanik Ganeshotsava Samiti, Wadala',
     nameMarathi: 'GSB सार्वजनिक गणेशोत्सव समिती, वडाळा',
-    logo: '/sponsors/gsb.png',
+    logo: '/sponsors/sp1.webp',
   },
   {
     name: 'Shri Siddhivinayak Ganapati Nyas, Prabhadevi',
     nameMarathi: 'श्री सिद्धिविनायक गणपती न्यास, प्रभादेवी',
-    logo: '/sponsors/siddhivinayak.png',
+    logo: '/sponsors/sp2.webp',
   },
   {
     name: 'Brihan Mumbai Mahanagar Palika, Shivaji Park Shakha',
     nameMarathi: 'बृहन्मुंबई महानगरपालिका, शिवाजी पार्क शाखा',
-    logo: '/sponsors/bmc.png',
+    logo: '/sponsors/sp3.webp',
   },
+  {
+    name: '',
+    nameMarathi: '',
+    logo: '/sponsors/sp4.webp',
+  },
+  {
+    name: '',
+    nameMarathi: '',
+    logo: '/sponsors/sp5.webp',
+  },
+  {
+    name: '',
+    nameMarathi: '',
+    logo: '/sponsors/sp6.webp',
+  },
+  {
+    name: '',
+    nameMarathi: '',
+    logo: '/sponsors/sp7.webp',
+  },
+  {
+    name: '',
+    nameMarathi: '',
+    logo: '/sponsors/sp8.webp',
+  },
+  {
+    name: '',
+    nameMarathi: '',
+    logo: '/sponsors/sp9.webp',
+  },
+  {
+    name: '',
+    nameMarathi: '',
+    logo: '/sponsors/sp10.webp',
+  }
 ];
 
 export const SponsorsSection = () => {
@@ -65,7 +100,7 @@ export const SponsorsSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-4xl mx-auto">
           {sponsors.map((sponsor, index) => (
             <motion.div
               key={index}
@@ -75,16 +110,26 @@ export const SponsorsSection = () => {
               transition={{ delay: index * 0.1 }}
               className="group"
             >
-              <div className="bg-card rounded-xl p-6 min-h-[8rem] flex items-center justify-center border border-border transition-all duration-300 hover:shadow-gold hover:border-gold/50 cursor-pointer">
-                <div className="text-center w-full">
-                  <div className="w-16 h-16 mx-auto mb-2 flex items-center justify-center overflow-hidden bg-muted rounded-full group-hover:bg-gold/10 transition-colors">
-                    <SponsorLogo src={sponsor.logo} alt={sponsor.name} fallbackLetter={sponsor.name.charAt(0)} />
-                  </div>
-                  <p className="text-xs text-muted-foreground group-hover:text-foreground transition-colors line-clamp-2">
-                    {t(sponsor.name, sponsor.nameMarathi)}
-                  </p>
-                </div>
+            <div className="bg-card rounded-xl overflow-hidden border border-border 
+                transition-all duration-300 hover:shadow-gold hover:border-gold/50 cursor-pointer">
+
+              {/* Image Area */}
+              <div className="h-40 w-full flex items-center justify-center bg-muted centered">
+                <SponsorLogo 
+                  src={sponsor.logo} 
+                  alt={sponsor.name} 
+                  fallbackLetter={sponsor.name.charAt(0)} 
+                />
               </div>
+
+              {/* Text Area */}
+              <div className="p-4 text-center">
+                <p className="text-sm text-muted-foreground group-hover:text-foreground transition-colors line-clamp-2">
+                  {t(sponsor.name, sponsor.nameMarathi)}
+                </p>
+              </div>
+            </div>
+
             </motion.div>
           ))}
         </div>
