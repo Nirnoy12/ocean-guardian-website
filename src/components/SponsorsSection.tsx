@@ -79,7 +79,7 @@ export const SponsorsSection = () => {
   const { t } = useLanguage();
 
   return (
-    <section id="sponsors" className="py-20 bg-muted/50">
+    <section id="sponsors" className=" bg-muted/50">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -99,7 +99,7 @@ export const SponsorsSection = () => {
             )}
           </p>
         </motion.div>
-
+            
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-4xl mx-auto">
           {sponsors.map((sponsor, index) => (
             <motion.div

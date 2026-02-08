@@ -22,6 +22,7 @@ export const IntroductionSection = () => {
           <div className="w-24 h-1 bg-gold mx-auto rounded-full" />
         </motion.div>
 
+        <div className='bg-ocean-deep'>
         {/* Foundation Image */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -30,12 +31,14 @@ export const IntroductionSection = () => {
           transition={{ duration: 0.6 }}
           className="max-w-5xl mx-auto mb-12"
         >
+          
           <img
             src="/three.png"
             alt="Our Foundation"
             className="w-full h-full md:h-[700px] object-cover rounded-2xl shadow-lg border border-blue-300"
           />
         </motion.div>
+        </div>
 
 
         {/* Stats */}
@@ -52,7 +55,7 @@ export const IntroductionSection = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="bg-card rounded-xl p-8 text-center shadow-card border border-border"
+              className="bg-card rounded-xl p-4 text-center shadow-card border border-border"
             >
               <div className="font-heading font-bold text-4xl text-primary mb-2">
                 {stat.value}
