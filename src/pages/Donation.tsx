@@ -93,8 +93,8 @@ export default function Donation() {
             src="/donation.png"
             alt="UPI QR Code"
             className="w-100 h-80 object-contain rounded-xl 
-             border-2 border-sky-400/100 
-             shadow-[0_0_50px_rgba(56,189,248,0.5)]"
+             border-5 border-sky-400/100
+             shadow-[0_0_20px_rgba(56,189,248,0.4)]"
           />
         </div>
 
