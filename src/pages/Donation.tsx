@@ -64,22 +64,42 @@ export default function Donation() {
 
             {/* Online / Bank Details */}
             <div className="bg-card rounded-2xl p-8 border border-border mb-8">
-              <h2 className="font-heading font-bold text-xl text-foreground mb-4 flex items-center gap-2">
-                <CreditCard className="w-5 h-5 text-gold" />
-                {t('For Online Donation – Account Details', 'ऑनलाइन देणगीसाठी – खाते तपशील')}
-              </h2>
-              <div className="space-y-2 text-muted-foreground font-mono text-sm">
-                <p><span className="text-foreground font-medium">{t('Bank Name', 'बँक नाव')}:</span> Federal Bank</p>
-                <p><span className="text-foreground font-medium">{t('Branch', 'शाखा')}:</span> Dadar West Branch</p>
-                <p><span className="text-foreground font-medium">{t('Account No', 'खाते क्रमांक')}:</span> 15050200010971</p>
-                <p><span className="text-foreground font-medium">IFSC Code:</span> FDRL0001505</p>
-                <p><span className="text-foreground font-medium">PAN:</span> AADTJ9519N</p>
-                <p><span className="text-foreground font-medium">UPI ID:</span> jaljivrakshak13@fbi</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              
+              {/* Left column */}
+              <div>
+                <h2 className="font-heading font-bold text-xl text-foreground mb-4 flex items-center gap-2">
+                  <CreditCard className="w-5 h-5 text-gold" />
+                  For Online Donation – Account Details
+                </h2>
+
+                <div className="space-y-2 text-muted-foreground font-mono text-sm">
+                  <p><span className="text-foreground font-medium">Bank Name:</span> Federal Bank</p>
+                  <p><span className="text-foreground font-medium">Branch:</span> Dadar West Branch</p>
+                  <p><span className="text-foreground font-medium">Account No:</span> 15050200010971</p>
+                  <p><span className="text-foreground font-medium">IFSC Code:</span> FDRL0001505</p>
+                  <p><span className="text-foreground font-medium">PAN:</span> AADTJ9519N</p>
+                  <p><span className="text-foreground font-medium">UPI ID:</span> jaljivrakshak13@fbi</p>
+                </div>
+
+                <Button size="lg" className="mt-6 bg-gold hover:bg-gold-dark text-ocean-deep font-bold rounded-full">
+                  Donate Now
+                </Button>
               </div>
-              <Button asChild size="lg" className="mt-6 bg-gold hover:bg-gold-dark text-ocean-deep font-heading font-bold rounded-full">
-                <Link to="/contact">{t('Donate Now', 'आता दान करा')}</Link>
-              </Button>
+
+              {/* Right column */}
+              <div className="flex justify-center md:justify-end">
+                <img
+                  src="/donation.png"
+                  alt="UPI QR Code"
+                  className="w-48 h-48 object-contain rounded-xl shadow-lg"
+                />
+              </div>
+
             </div>
+          </div>
+
+            
 
             {/* Cheque / DD */}
             <div className="bg-card rounded-2xl p-8 border border-border mb-8">
