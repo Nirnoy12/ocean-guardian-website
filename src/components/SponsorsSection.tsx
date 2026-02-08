@@ -100,7 +100,7 @@ export const SponsorsSection = () => {
           </p>
         </motion.div>
             
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {sponsors.map((sponsor, index) => (
             <motion.div
               key={index}
@@ -110,7 +110,7 @@ export const SponsorsSection = () => {
               transition={{ delay: index * 0.1 }}
               className="group"
             >
-            <div className="bg-card rounded-xl overflow-hidden border border-border 
+            <div className="bg-card rounded-xl overflow-hidden border border-border
                 transition-all duration-300 hover:shadow-gold hover:border-gold/50 cursor-pointer">
 
               {/* Image Area */}
