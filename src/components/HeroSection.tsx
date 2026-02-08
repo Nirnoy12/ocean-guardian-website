@@ -111,19 +111,6 @@ export const HeroSection = () => {
 
         </div>
 
-        {/* Slider Dots/Indicators (Kept for navigation, but arrows removed) */}
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
-          {SLIDER_IMAGES.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                index === currentSlide ? 'bg-gold w-8' : 'bg-white/50 hover:bg-white'
-              }`}
-            />
-          ))}
-        </div>
-
       </div>
     </section>
   );
