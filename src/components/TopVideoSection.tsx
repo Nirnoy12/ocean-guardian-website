@@ -13,13 +13,13 @@ export function TopVideoSection() {
     <section 
       // 'mt-16' pushes it below the fixed navbar
       // 'h-[45vh]' gives it enough height to show the text beautifully
-      className="relative w-full h-[45vh] min-h-[350px] overflow-hidden flex-shrink-0 mt-16 flex items-center justify-center"
+      className="relative w-full h-full min-h-[650px] overflow-hidden flex-shrink-0 mt-16 flex items-center justify-center"
     >
       {/* Static Background Image */}
       <img
         src={beachImage}
         alt="Header Background"
-        className="absolute inset-0 w-full h-full object-cover"
+        className="absolute inset-0 w-full h-full object-right-bottom brightness-75" /* Slightly darkened for better text contrast */
       />
       
       {/* Dark Overlay - Increased opacity to 50% so text pops */}
