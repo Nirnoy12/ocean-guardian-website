@@ -23,30 +23,37 @@ const generalBodyMembers = [
   "Anand Keshav Raimane (PRO – East zone)",
   "Rafik Babu Mulani (PRO – Western zone)",
   "Devendra Yadav (PRO – Western zone)",
-  "Rajesh Venkatesham Ankam (Website)",
   "Vijay Babu Mithapara (Instructor)",
   "Darshan Balasaheb Dhokare (Instructor)",
-  "Devendra Suryabali Yadav",
   "Umashankar Samarnath Sharma",
   "Bhushan Harendra Pandhare",
-  "Rohan Vinodkumar Devlekar"
+  "Rohan Vinodkumar Devlekar",
+  "Ajay Gopal Ajgoankar"
 ];
 
 const vipMembers = [
   "Shri Prakash Prabhakar Bhat (Committee Member : GSB Sarvajanik, Ganeshotsava Samiti, Wadala, Mumbai)",
-  "Shri Shirish Pandurang Beke (Chairman : Alok Aqua Engineers)",
   "Shri Jitendra Vishnu Kamble (Chairman : Dharmaratna Samajik Sanstha)",
   "Shri Rajendra Ramchandra Lokhande (Shift Incharge : Disaster Management Department, MCGM )",
-  "Dr Dilip Gupta ( Doctor )",
-  "Shri Vishal Dinanath Gundetti ( Vice President : Buland Aawaaz)",
-  "Shri Vinod Vichare (Head Constable, Education Dept., RTO, Mumbai)",
   "Shri Sandeep Balkrishna Shivtarkar ( Chairman : Incredible Martial Arts Academy)",
   "Shri Sanjaykumar Gyanpraksh Mishra ( National President : Anyay Virodhak Seva Samiti )"
 ];
 
 const activeMembersWomen = [
-  "Pradnya Mahendra Pawar", "Bhavna Rajendra Bhosle", "Shradha Gurunath Mane", "Pooja Balasaheb Alhat", "Bhavika Shankar More", 
-  "Shalaka Ashok Mundak", "Sneha Namdev Katkar", "Suvarna Kishore Shinde", "Dhruvi Jitu Solanki", "Rohini Anil Kajrolkar"
+  "Anu Ashok Ramaiiya (Juhu)",
+  "Beby Ganesh Swami (Juhu)",
+  "Bhakti Mahendra Pawar",
+  "Bhavika Mandar Katkar",
+  "Darshana Ravi Patel (Juhu)",
+  "Dhruvi Jitu Solanki",
+  "Kartika Shashikant Jadhav",
+  "Lalita Ramchandra Bhriste (Juhu)",
+  "Manisha Vijay Lokhande (Juhu)",
+  "Meena Vishnu Nadar (Juhu)",
+  "Megha Naresh Kharwa (Juhu)",
+  "Rupa Ravi Patel (Juhu)",
+  "Sunita Ganesh Gade (Juhu)",
+  "Usha Anil Rathod (Juhu)"
 ];
 
 const activeMembersMen = [
@@ -107,7 +114,24 @@ const activeMembersMen = [
   "Vinayak Rajaram Iswalkar", "Vinayak Shashikant Mistry", "Vinit Krishna Koli", "Vinod Babu Mithapraha", "Vinod Parshuram Shinde", "Vinod Sitaram Bharti",
   "Vishal Narayan Chekaliya", "Vishal Sadanand Pingle", "Vishal Suresh Pande", "Vishnu Mahadev Gawde", "Vishwajit Satish Chavan", "Vishwas Dnyaneshwar Jagdale",
   "Vishwas Shantaram Avinave", "Vivek Shashikant Patil", "Waman Vishnu Kamble", "Yadnesh Dnyaneshwar Gorad", "Yash Bhanwarlal Choudhary", "Yash Kiran Shinde",
-  "Yogesh Amritlal Chawda", "Yogesh Kishor Naik", "Yogesh Krushali Salaskar", "Yogesh Parmar"
+  "Yogesh Amritlal Chawda", "Yogesh Kishor Naik", "Yogesh Krushali Salaskar", "Yogesh Parmar",
+  "Sushant Vasant Kotawadekar",
+  "Omkar Nagesh Bhusane",
+  "Hasnain Anwar Shaikh",
+  "Gaurav Krushna Bhagade",
+  "Hitesh Ravindra Draveshi",
+  "Maitreya Mandar Katkar",
+  "Vaibhav Devean Nagare",
+  "Manav Mukesh Gohil",
+  "Tejas Kishor Bolaye",
+  "Sahil Pravin Surve",
+  "Dashrath Sudhakar Dongre",
+  "AnilKumar Rajaram Guddeti",
+  "Vaibhav Rajan Naik",
+  "Santosh Vinod Kharvi",
+  "Mahesh Anantrao Mane",
+  "Abhishekh Anil Bhartiya",
+  "Saurav Vinod Bharti"
 ];
 
 // Reusable Collapsible Component
