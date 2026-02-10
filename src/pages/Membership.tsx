@@ -40,11 +40,22 @@ const MEMBERSHIP_RULES = [
   'Non-swimmers can participate only as "Swayamsevaks".',
 ];
 
-// Replace with actual form URL when available
-const MEMBERSHIP_FORM_URL = '/membership-form.pdf';
+// Path to your PDF file in the public folder
+const MEMBERSHIP_FORM_URL = '/final-membership-form_compressed-1.pdf';
 
 export default function Membership() {
   const { t } = useLanguage();
+
+  // Function to handle download
+  const handleDownload = () => {
+    // Create a link element
+    const link = document.createElement('a');
+    link.href = MEMBERSHIP_FORM_URL;
+    link.download = 'Jaljiv-Rakshak-Membership-Form.pdf'; // The name of the downloaded file
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
     <PageLayout>
@@ -139,11 +150,9 @@ export default function Membership() {
               <p className="text-muted-foreground mb-4">
                 14/A, Navprabhat Chambers, 2nd Floor, Ranade Road, Dadar (W), Mumbai, Maharashtra, India-400028
               </p>
-              <Button asChild className="rounded-full font-heading gap-2">
-                <a href={MEMBERSHIP_FORM_URL} download target="_blank" rel="noopener noreferrer">
-                  <Download className="w-4 h-4" />
-                  {t('Download Membership Form', 'सदस्यत्व फॉर्म डाउनलोड करा')}
-                </a>
+              <Button onClick={handleDownload} className="rounded-full font-heading gap-2">
+                <Download className="w-4 h-4" />
+                {t('Download Membership Form', 'सदस्यत्व फॉर्म डाउनलोड करा')}
               </Button>
             </div>
 
