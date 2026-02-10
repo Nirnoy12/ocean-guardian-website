@@ -45,9 +45,9 @@ export const IntroductionSection = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto mb-10">
           {[
             { value: '25+', label: t('Years of Service', 'सेवेची वर्षे') },
-            { value: '400+', label: t('Active Volunteers', 'सक्रिय स्वयंसेवक') },
-            { value: '1000+', label: t('Lives Saved', 'वाचवलेले जीव') },
-            { value: '15+', label: t('Beach Locations', 'समुद्रकिनारे') },
+            { value: '650+', label: t('Active Volunteers', 'सक्रिय स्वयंसेवक') },
+            { value: '400+', label: t('Lives Saved', 'वाचवलेले जीव') },
+            { value: '10+', label: t('Beach Locations', 'समुद्रकिनारे') },
           ].map((stat, index) => (
             <motion.div
               key={index}

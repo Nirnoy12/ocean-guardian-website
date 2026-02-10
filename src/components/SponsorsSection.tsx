@@ -48,11 +48,7 @@ const sponsors = [
     nameMarathi: '',
     logo: '/sponsors/sp5.webp',
   },
-  {
-    name: '',
-    nameMarathi: '',
-    logo: '/sponsors/sp6.webp',
-  },
+  
   {
     name: '',
     nameMarathi: '',
@@ -68,18 +64,13 @@ const sponsors = [
     nameMarathi: '',
     logo: '/sponsors/sp9.webp',
   },
-  {
-    name: '',
-    nameMarathi: '',
-    logo: '/sponsors/sp10.webp',
-  }
 ];
 
 export const SponsorsSection = () => {
   const { t } = useLanguage();
 
   return (
-    <section id="sponsors" className=" bg-muted/50">
+    <section id="sponsors" className="py-20 bg-muted/50">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

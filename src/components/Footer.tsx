@@ -176,7 +176,7 @@ export const Footer = () => {
               <div className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-gold flex-shrink-0" />
                 <a href="mailto:support@jaljivrakshakngo.org" className="text-white/70 text-sm hover:text-gold break-all">
-                  support@jaljivrakshakngo.org
+                  jjrfbombay@gmail.com
                 </a>
               </div>
             </div>
