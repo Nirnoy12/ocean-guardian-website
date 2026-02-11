@@ -189,7 +189,7 @@ export const Footer = () => {
             © 2025 Jaljiv Rakshak NGO. {t('All Rights Reserved.', 'सर्व हक्क राखीव.')}
           </p>
           <p className="text-white/40 text-xs">
-            Designed By Site Invention
+            Designed By Nirnoy and Subhradeep 
           </p>
         </div>
       </div>
