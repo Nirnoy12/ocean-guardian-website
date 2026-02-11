@@ -14,7 +14,7 @@ export const BackgroundMusic = ({ playTrigger }: BackgroundMusicProps) => {
   useEffect(() => {
     if (playTrigger && audioRef.current) {
       const audio = audioRef.current;
-      audio.volume = 0.3; // Low volume
+      audio.volume = 0.5; // Low volume
       
       const playPromise = audio.play();
       if (playPromise !== undefined) {

@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Play, Volume2, VolumeX } from 'lucide-react'; // Added Volume icons
+import { Play, SkipForward, ArrowRight } from 'lucide-react';
 import introVideo from '@/assets/intro.mp4'; 
 
 interface IntroVideoProps {
@@ -8,105 +8,113 @@ interface IntroVideoProps {
 }
 
 export const IntroVideo = ({ onEnter }: IntroVideoProps) => {
-  const [showSkip, setShowSkip] = useState(false);
+  const [hasStarted, setHasStarted] = useState(false); // Track if user clicked Play
   const [videoEnded, setVideoEnded] = useState(false);
+  const [isReturningUser, setIsReturningUser] = useState(false);
   
-  // CHANGED: Manage mute state
-  const [isMuted, setIsMuted] = useState(true); 
-
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    const hasVisited = localStorage.getItem('hasVisited');
-    if (hasVisited) {
-      setShowSkip(true);
+    // Check if user has visited before to show Skip button
+    const visited = localStorage.getItem('hasVisited');
+    if (visited) {
+      setIsReturningUser(true);
     }
   }, []);
+
+  const handlePlayIntro = () => {
+    if (videoRef.current) {
+      setHasStarted(true);
+      // Unmute and Play
+      videoRef.current.muted = false;
+      videoRef.current.volume = 1.0;
+      videoRef.current.play();
+    }
+  };
 
   const handleVideoEnd = () => {
     setVideoEnded(true);
   };
 
-  const handleEnter = () => {
+  const handleEnterWebsite = () => {
     localStorage.setItem('hasVisited', 'true');
     onEnter();
   };
 
-  // CHANGED: Function to toggle sound
-  const toggleMute = () => {
-    if (videoRef.current) {
-      videoRef.current.muted = !videoRef.current.muted;
-      setIsMuted(videoRef.current.muted);
-    }
-  };
-
   return (
-    <div className="fixed inset-0 z-[100] bg-black flex items-center justify-center overflow-hidden">
+    <div className="fixed inset-0 z-[100] bg-black flex items-center justify-center overflow-hidden font-sans">
+      
+      {/* 1. VIDEO ELEMENT (Static First Frame initially) */}
       <video
         ref={videoRef}
         src={introVideo}
-        className="w-full h-full object-cover"
-        autoPlay
-        muted={true} // Starts muted to satisfy browser autoplay policy
+        className="absolute inset-0 w-full h-full object-cover"
+        preload="auto" // Ensures the first frame loads immediately
         playsInline
+        // Note: No 'autoPlay' here, so it shows the first frame
         onEnded={handleVideoEnd}
       />
 
-      {/* OVERLAY CONTENT */}
-      <div className="absolute inset-0 z-10 p-6 flex flex-col justify-between">
-        
-        {/* TOP BAR: Unmute (Left) & Skip (Right) */}
-        <div className="flex justify-between items-start w-full">
+      {/* 2. START SCREEN OVERLAY (Visible before playing) */}
+      {!hasStarted && (
+        <div className="absolute inset-0 z-20 flex flex-col items-center justify-center p-6 text-center">
           
-          {/* 1. NEW UNMUTE BUTTON */}
-          <button
-            onClick={toggleMute}
-            className="flex items-center gap-2 px-3 py-2 bg-black/40 backdrop-blur-md border border-white/10 rounded-full text-white hover:bg-black/60 transition-all"
+          {/* Dark overlay to make buttons readable against the video frame */}
+          <div className="absolute inset-0 bg-black/50 -z-10" />
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="space-y-8 relative z-20"
           >
-            {isMuted ? (
-              <>
-                <VolumeX className="w-5 h-5" />
-                <span className="text-sm font-medium">Unmute</span>
-              </>
-            ) : (
-              <>
-                <Volume2 className="w-5 h-5 text-gold" />
-                <span className="text-sm font-medium text-gold">Sound On</span>
-              </>
-            )}
-          </button>
+            <h1 className="text-white text-3xl md:text-5xl font-heading font-bold tracking-wider mb-8 drop-shadow-lg">
+              JAL JIV RAKSHAK FOUNDATION
+            </h1>
 
-          {/* 2. SKIP BUTTON (Only returning users) */}
-          {showSkip ? (
-            <motion.button
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              onClick={handleEnter}
-              className="group flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white hover:bg-white/20 transition-all"
-            >
-              Skip Intro <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </motion.button>
-          ) : <div />} {/* Empty div to keep layout balanced if skip is hidden */}
-        </div>
-
-        {/* CENTER/BOTTOM: Visit Website Button */}
-        <AnimatePresence>
-          {videoEnded && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              className="absolute inset-0 flex items-center justify-center pointer-events-none"
-            >
+            <div className="flex flex-col md:flex-row gap-6 items-center justify-center">
+              {/* VIEW INTRO BUTTON */}
               <button
-                onClick={handleEnter}
-                className="pointer-events-auto bg-gold hover:bg-gold-dark text-ocean-deep font-heading font-bold text-2xl px-12 py-6 rounded-full shadow-2xl pulse-glow flex items-center gap-3 transition-transform hover:scale-105"
+                onClick={handlePlayIntro}
+                className="group relative px-8 py-4 bg-transparent border-2 border-gold text-gold font-bold text-xl uppercase tracking-widest hover:bg-gold hover:text-black transition-all duration-300 rounded-lg flex items-center gap-3 shadow-lg"
               >
-                Visit Website <Play className="w-6 h-6 fill-current" />
+                <Play className="w-6 h-6 fill-current" />
+                View Intro
               </button>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
+
+              {/* SKIP INTRO BUTTON (Returning Users Only) */}
+              {isReturningUser && (
+                <button
+                  onClick={handleEnterWebsite}
+                  className="group px-8 py-4 bg-white/10 border-2 border-white/50 text-white font-bold text-xl uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-300 rounded-lg flex items-center gap-3 backdrop-blur-sm shadow-lg"
+                >
+                  Skip Intro
+                  <SkipForward className="w-6 h-6" />
+                </button>
+              )}
+            </div>
+          </motion.div>
+        </div>
+      )}
+
+      {/* 3. "VISIT WEBSITE" BUTTON (Appears when video ends) */}
+      <AnimatePresence>
+        {videoEnded && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            // Positioned 15% from bottom
+            className="absolute bottom-[15%] left-0 right-0 z-30 flex justify-center pointer-events-none"
+          >
+            <button
+              onClick={handleEnterWebsite}
+              className="pointer-events-auto bg-gold hover:bg-gold-dark text-ocean-deep font-heading font-bold text-2xl px-12 py-6 rounded-full shadow-2xl pulse-glow flex items-center gap-3 transition-transform hover:scale-105"
+            >
+              Enter Website <ArrowRight className="w-6 h-6" />
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
     </div>
   );
 };
