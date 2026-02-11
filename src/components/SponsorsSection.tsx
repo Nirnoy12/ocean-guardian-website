@@ -27,47 +27,66 @@ const sponsors = [
     name: 'GSB Sarvajanik Ganeshotsava Samiti, Wadala',
     nameMarathi: 'GSB सार्वजनिक गणेशोत्सव समिती, वडाळा',
     logo: '/sponsors/sp1.webp',
+    website: '',
   },
   {
     name: 'Shri Siddhivinayak Ganapati Nyas, Prabhadevi',
     nameMarathi: 'श्री सिद्धिविनायक गणपती न्यास, प्रभादेवी',
     logo: '/sponsors/sp2.webp',
+    website: '',
   },
   {
     name: 'Brihan Mumbai Mahanagar Palika, Shivaji Park Shakha',
     nameMarathi: 'बृहन्मुंबई महानगरपालिका, शिवाजी पार्क शाखा',
     logo: '/sponsors/sp3.webp',
+    website: '',
   },
   {
     name: '',
     nameMarathi: '',
     logo: '/sponsors/sp4.webp',
+    website: '',
   },
   {
     name: '',
     nameMarathi: '',
     logo: '/sponsors/sp5.webp',
+    website: '',
   },
-  
   {
     name: '',
     nameMarathi: '',
     logo: '/sponsors/sp7.webp',
+    website: '',
   },
   {
     name: '',
     nameMarathi: '',
     logo: '/sponsors/sp8.webp',
+    website: '',
   },
   {
     name: '',
     nameMarathi: '',
     logo: '/sponsors/sp9.webp',
+    website: '',
   },
+  {
+    name: 'Evara Media',
+    nameMarathi: 'इवारा मीडिया',
+    logo: '/sponsors/new.jpg',
+    website: 'https://www.evaramedia.com/',
+  }
 ];
 
 export const SponsorsSection = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+
+  const handleSponsorClick = (website: string) => {
+    if (website) {
+      window.open(website, '_blank', 'noopener,noreferrer');
+    }
+  };
 
   return (
     <section id="sponsors" className="py-20 bg-muted/50">
@@ -100,27 +119,36 @@ export const SponsorsSection = () => {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
               className="group"
+              onClick={() => handleSponsorClick(sponsor.website)}
             >
-            <div className="bg-card rounded-xl overflow-hidden border border-border
-                transition-all duration-300 hover:shadow-gold hover:border-gold/50 cursor-pointer">
+              <div className={`
+                bg-card rounded-xl overflow-hidden border border-border
+                transition-all duration-300 hover:shadow-gold hover:border-gold/50
+                ${sponsor.website ? 'cursor-pointer' : 'cursor-default'}
+              `}>
+                {/* Image Area */}
+                <div className="h-40 w-full flex items-center justify-center bg-muted centered">
+                  <SponsorLogo 
+                    src={sponsor.logo} 
+                    alt={sponsor.name || 'Sponsor'} 
+                    fallbackLetter={sponsor.name ? sponsor.name.charAt(0) : 'S'} 
+                  />
+                </div>
 
-              {/* Image Area */}
-              <div className="h-40 w-full flex items-center justify-center bg-muted centered">
-                <SponsorLogo 
-                  src={sponsor.logo} 
-                  alt={sponsor.name} 
-                  fallbackLetter={sponsor.name.charAt(0)} 
-                />
+                {/* Text Area */}
+                {sponsor.name && (
+                  <div className="p-4 text-center border-t border-border">
+                    <p className="text-sm text-muted-foreground group-hover:text-foreground transition-colors line-clamp-2">
+                      {language === 'en' ? sponsor.name : (sponsor.nameMarathi || sponsor.name)}
+                    </p>
+                    {sponsor.website && (
+                      <p className="text-xs text-gold mt-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                        {t('Click to visit', 'भेट देण्यासाठी क्लिक करा')} →
+                      </p>
+                    )}
+                  </div>
+                )}
               </div>
-
-              {/* Text Area */}
-              <div className="p-4 text-center">
-                <p className="text-sm text-muted-foreground group-hover:text-foreground transition-colors line-clamp-2">
-                  {t(sponsor.name, sponsor.nameMarathi)}
-                </p>
-              </div>
-            </div>
-
             </motion.div>
           ))}
         </div>
