@@ -48,8 +48,7 @@ export const IntroVideo = ({ onEnter }: IntroVideoProps) => {
       <video
         ref={videoRef}
         src={introVideo}
-        className="absolute inset-0 w-full h-full object-cover"
-        preload="auto" // Ensures the first frame loads immediately
+        className="absolute inset-0 w-full h-full object-contain md:object-cover bg-black"        preload="auto" // Ensures the first frame loads immediately
         playsInline
         // Note: No 'autoPlay' here, so it shows the first frame
         onEnded={handleVideoEnd}

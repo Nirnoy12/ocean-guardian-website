@@ -6,6 +6,21 @@ import { useLanguage } from '@/contexts/LanguageContext';
 // Gallery images grouped by category
 const GALLERY_GROUPS = [
   {
+    id: 'Latest',
+    title: 'Latest Updates',
+    titleMarathi: 'नवीन अद्यतन',
+    count: 7,
+    images: [
+      'lu1.jpeg',
+      'lu2.jpeg',
+      'lu3.jpeg',
+      'lu4.jpeg',
+      'lu5.jpeg',
+      'lu6.jpeg',
+      'lu7.jpeg'
+    ]
+  },
+  {
     id: 'events',
     title: 'Sunk Rock To Gateway Of India, 2KM',
     titleMarathi: 'सनक रॉक ते गेटवे ऑफ इंडिया, २ किमी',
@@ -70,21 +85,6 @@ const GALLERY_GROUPS = [
       'awards3.webp',
       'awards4.webp',
       'awards5.webp'
-    ]
-  },
-  {
-    id: 'Latest',
-    title: 'Latest Updates',
-    titleMarathi: 'नवीन अद्यतन',
-    count: 7,
-    images: [
-      'lu1.jpeg',
-      'lu2.jpeg',
-      'lu3.jpeg',
-      'lu4.jpeg',
-      'lu5.jpeg',
-      'lu6.jpeg',
-      'lu7.jpeg'
     ]
   }
 ];

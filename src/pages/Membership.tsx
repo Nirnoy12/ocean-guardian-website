@@ -58,7 +58,7 @@ export default function Membership() {
   };
 
   return (
-    <PageLayout>
+    <PageLayout headerImage="/lu4.jpeg">
       <section className="py-20">
         <div className="container mx-auto px-4">
           <motion.div

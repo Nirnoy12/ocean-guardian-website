@@ -3,38 +3,24 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 
-// New Components
+// Components
 import ScrollToTop from "@/components/ScrollToTop";
 import { IntroVideo } from "@/components/IntroVideo";
 import { BackgroundMusic } from "@/components/BackgroundMusic";
-
-// Pages
-import Index from "./pages/Index";
-import About from "./pages/About";
-import Services from "./pages/Services";
-import Donation from "./pages/Donation";
-import Membership from "./pages/Membership";
-import Gallery from "./pages/Gallery";
-import Contact from "./pages/Contact";
-import Privacy from "./pages/Privacy";
-import Disclaimer from "./pages/Disclaimer";
-import Terms from "./pages/Terms";
-import NotFound from "./pages/NotFound";
+import { AnimatedRoutes } from "@/components/AnimatedRoutes"; // <--- Import the new component
 
 const queryClient = new QueryClient();
 
 const App = () => {
-  // State to control Intro vs Main Website visibility
   const [showIntro, setShowIntro] = useState(true);
   const [musicStarted, setMusicStarted] = useState(false);
 
-  // Called when user clicks "Visit Website" or "Skip"
   const handleIntroComplete = () => {
     setShowIntro(false);
-    setMusicStarted(true); // Starts the background music
+    setMusicStarted(true);
   };
 
   return (
@@ -44,31 +30,20 @@ const App = () => {
           <Toaster />
           <Sonner />
 
-          {/* 1. INTRO VIDEO OVERLAY (Shows first) */}
+          {/* 1. Intro Video */}
           {showIntro && <IntroVideo onEnter={handleIntroComplete} />}
 
-          {/* 2. BACKGROUND MUSIC (Starts after intro) */}
+          {/* 2. Background Music */}
           <BackgroundMusic playTrigger={musicStarted} />
 
-          {/* 3. MAIN WEBSITE (Hidden until intro is done) */}
+          {/* 3. Main Website */}
           {!showIntro && (
             <BrowserRouter>
-              {/* Handles scroll position on route change */}
               <ScrollToTop />
               
-              <Routes>
-                <Route path="/" element={<Index />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/services" element={<Services />} />
-                <Route path="/donation" element={<Donation />} />
-                <Route path="/membership" element={<Membership />} />
-                <Route path="/gallery" element={<Gallery />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/privacy" element={<Privacy />} />
-                <Route path="/disclaimer" element={<Disclaimer />} />
-                <Route path="/terms" element={<Terms />} />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
+              {/* REPLACED ALL <Routes>... WITH THIS SINGLE LINE: */}
+              <AnimatedRoutes />
+              
             </BrowserRouter>
           )}
         </LanguageProvider>

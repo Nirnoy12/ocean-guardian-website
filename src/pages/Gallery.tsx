@@ -3,7 +3,7 @@ import { GallerySection } from '@/components/GallerySection';
 
 export default function Gallery() {
   return (
-    <PageLayout>
+    <PageLayout headerImage="/lu1.jpeg">
       <GallerySection />
     </PageLayout>
   );

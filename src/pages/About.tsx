@@ -10,6 +10,7 @@ import boss from '@/assets/boss.webp';
 import normal from '@/assets/normal.webp';
 
 
+
 const englishText = `JALJIV RAKSHAK FOUNDATION (Regd.), MUMBAI is an NGO comprising of swimmers/lifeguards/volunteers, etc. who have been co-ordinating with Traffic Control Branch (R.T.O.) MUMBAI for more than 25 years and in active co-ordination with Mumbai Police and Brihan Mumbai Mahanagar Palika (BMC) is providing Lifeguards for Ganesh immersion, Devi visarjan, Mahamanav Bharat Ratna Dr Babasaheb Ambedkar Mahaparinirvan din – 6th December, 31st December, New year celebrations, Haji Ali Darga Badi Raat, Ramzan Eid, etc. and for other Emergency Services. We provide "FREE OF COST" services on above occasions at various beaches of Mumbai. With an army of more than 400 volunteers (Lifeguards) stationed on shores putting in dedication of selfless service & hard work by standing in waters for 12–16 hours, are responsible for safety and security of general public and drowning incidences in particular.`;
 
 const coreCommittee = [
@@ -191,7 +192,7 @@ export default function About() {
   const { t } = useLanguage();
 
   return (
-    <PageLayout>
+    <PageLayout headerImage="/cyan.jpg">
       <section className="py-20">
         <div className="container mx-auto px-4">
           <motion.div
