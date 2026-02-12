@@ -42,6 +42,12 @@ const sponsors = [
     website: '',
   },
   {
+    name: 'Evara Media - Digital Marketing Partner',
+    nameMarathi: 'एवारा मीडिया - डिजिटल मार्केटिंग पार्टनर',
+    logo: '/sponsors/new.jpg',
+    website: 'https://www.evaramedia.com/',
+  },
+  {
     name: '',
     nameMarathi: '',
     logo: '/sponsors/sp4.webp',
@@ -71,12 +77,7 @@ const sponsors = [
     logo: '/sponsors/sp9.webp',
     website: '',
   },
-  {
-    name: 'Evara Media',
-    nameMarathi: 'इवारा मीडिया',
-    logo: '/sponsors/new.jpg',
-    website: 'https://www.evaramedia.com/',
-  }
+  
 ];
 
 export const SponsorsSection = () => {
@@ -135,14 +136,14 @@ export const SponsorsSection = () => {
                   />
                 </div>
 
-                {/* Text Area */}
+                {/* Text Area - With Bold Names */}
                 {sponsor.name && (
                   <div className="p-4 text-center border-t border-border">
-                    <p className="text-sm text-muted-foreground group-hover:text-foreground transition-colors line-clamp-2">
+                    <p className="text-sm font-bold text-muted-foreground group-hover:text-foreground transition-colors line-clamp-2">
                       {language === 'en' ? sponsor.name : (sponsor.nameMarathi || sponsor.name)}
                     </p>
                     {sponsor.website && (
-                      <p className="text-xs text-gold mt-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <p className="text-xs text-gold mt-1 opacity-0 group-hover:opacity-100 transition-opacity font-medium">
                         {t('Click to visit', 'भेट देण्यासाठी क्लिक करा')} →
                       </p>
                     )}
