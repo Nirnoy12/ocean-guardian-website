@@ -42,18 +42,6 @@ const sponsors = [
     website: '',
   },
   {
-    name: 'Evara Media - Digital Marketing Partner',
-    nameMarathi: 'एवारा मीडिया - डिजिटल मार्केटिंग पार्टनर',
-    logo: '/sponsors/new.jpg',
-    website: 'https://www.evaramedia.com/',
-  },
-  {
-    name: '',
-    nameMarathi: '',
-    logo: '/sponsors/sp4.webp',
-    website: '',
-  },
-  {
     name: '',
     nameMarathi: '',
     logo: '/sponsors/sp5.webp',
@@ -77,6 +65,12 @@ const sponsors = [
     logo: '/sponsors/sp9.webp',
     website: '',
   },
+  {
+    name: 'Evara Media - Digital Marketing Partner',
+    nameMarathi: 'एवारा मीडिया - डिजिटल मार्केटिंग पार्टनर',
+    logo: '/sponsors/new.jpg',
+    website: 'https://www.evaramedia.com/',
+  }
   
 ];
 

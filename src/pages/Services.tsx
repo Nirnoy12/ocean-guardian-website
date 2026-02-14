@@ -3,7 +3,7 @@ import { ServicesSection } from '@/components/ServicesSection';
 
 export default function Services() {
   return (
-    <PageLayout headerImage="/lu2.jpeg">
+    <PageLayout headerImage="/services.jpg">
       <ServicesSection />
     </PageLayout>
   );
