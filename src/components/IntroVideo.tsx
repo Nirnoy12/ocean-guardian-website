@@ -10,17 +10,8 @@ interface IntroVideoProps {
 export const IntroVideo = ({ onEnter }: IntroVideoProps) => {
   const [hasStarted, setHasStarted] = useState(false); // Track if user clicked Play
   const [videoEnded, setVideoEnded] = useState(false);
-  const [isReturningUser, setIsReturningUser] = useState(false);
   
   const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    // Check if user has visited before to show Skip button
-    const visited = localStorage.getItem('hasVisited');
-    if (visited) {
-      setIsReturningUser(true);
-    }
-  }, []);
 
   const handlePlayIntro = () => {
     if (videoRef.current) {
@@ -48,7 +39,8 @@ export const IntroVideo = ({ onEnter }: IntroVideoProps) => {
       <video
         ref={videoRef}
         src={introVideo}
-        className="absolute inset-0 w-full h-full object-contain md:object-cover bg-black"        preload="auto" // Ensures the first frame loads immediately
+        className="absolute inset-0 w-full h-full object-contain md:object-cover bg-black"
+        preload="auto" // Ensures the first frame loads immediately
         playsInline
         // Note: No 'autoPlay' here, so it shows the first frame
         onEnded={handleVideoEnd}
@@ -80,16 +72,14 @@ export const IntroVideo = ({ onEnter }: IntroVideoProps) => {
                 View Intro
               </button>
 
-              {/* SKIP INTRO BUTTON (Returning Users Only) */}
-              {isReturningUser && (
-                <button
-                  onClick={handleEnterWebsite}
-                  className="group px-8 py-4 bg-white/10 border-2 border-white/50 text-white font-bold text-xl uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-300 rounded-lg flex items-center gap-3 backdrop-blur-sm shadow-lg"
-                >
-                  Skip Intro
-                  <SkipForward className="w-6 h-6" />
-                </button>
-              )}
+              {/* SKIP INTRO BUTTON - Always visible */}
+              <button
+                onClick={handleEnterWebsite}
+                className="group px-8 py-4 bg-white/10 border-2 border-white/50 text-white font-bold text-xl uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-300 rounded-lg flex items-center gap-3 backdrop-blur-sm shadow-lg"
+              >
+                Skip Intro
+                <SkipForward className="w-6 h-6" />
+              </button>
             </div>
           </motion.div>
         </div>
