@@ -10,6 +10,7 @@ const SLIDER_IMAGES = [
   {
     id: 1,
     src: "/hero.png",
+    mobileSrc: "/hero_mobile.jpg",
     alt: "Slide 1"
   },
   {
@@ -19,7 +20,8 @@ const SLIDER_IMAGES = [
   },
   {
     id: 3,
-    src: "/lg.png", // Replace with different image if available
+    src: "/lg.png",
+    mobileSrc: "/mission_mobile.jpg", // Replace with different image if available
     alt: "Slide 3"
   },
   {
@@ -67,12 +69,23 @@ export const HeroSection = () => {
             transition={{ duration: 1 }}
             className="absolute inset-0"
           >
-            {/* Removed opacity classes to make images clearer */}
-            <img
-              src={SLIDER_IMAGES[currentSlide].src}
-              alt={SLIDER_IMAGES[currentSlide].alt}
-              className="w-full h-full object-cover" 
-            />
+            {/* --- UPDATED IMAGE LOGIC --- */}
+            <picture className="w-full h-full block">
+                {/* 1. If mobileSrc exists, use it for screens max-width 640px */}
+                {SLIDER_IMAGES[currentSlide].mobileSrc && (
+                    <source 
+                        media="(max-width: 640px)" 
+                        srcSet={SLIDER_IMAGES[currentSlide].mobileSrc} 
+                    />
+                )}
+                
+                {/* 2. Standard Image (Desktop/Default) */}
+                <img
+                    src={SLIDER_IMAGES[currentSlide].src}
+                    alt={SLIDER_IMAGES[currentSlide].alt}
+                    className="w-full h-full object-cover" 
+                />
+            </picture>
             {/* Very light overlay to ensure buttons are visible but images stay clear */}
             <div className="absolute inset-0 bg-black/10" />
           </motion.div>
@@ -85,7 +98,7 @@ export const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="flex flex-col sm:flex-row gap-20"
+            className="flex flex-col sm:flex-row gap-4 sm:gap-20"
           >
             <Button
               asChild
