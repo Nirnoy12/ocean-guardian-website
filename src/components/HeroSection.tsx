@@ -99,12 +99,16 @@ export const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="flex flex-col sm:flex-row gap-4 sm:gap-20"
+            // CHANGE 1: 'flex-col' became 'flex-row'. Added 'justify-center' and adjusted gap.
+            className="flex flex-row justify-center w-full gap-3 sm:gap-20"
           >
             <Button
               asChild
               size="lg"
-              className="bg-gold hover:bg-gold-dark text-ocean-deep font-heading font-bold text-xl px-10 py-7 rounded-full shadow-2xl pulse-glow border-2 border-white/20"
+              // CHANGE 2: Reduced mobile padding/text (px-6 py-6 text-sm) and kept large size for tablet+ (sm:px-10 sm:text-xl)
+              className="bg-gold hover:bg-gold-dark text-ocean-deep font-heading font-bold 
+                         text-sm px-5 py-6 sm:text-xl sm:px-10 sm:py-7 
+                         rounded-full shadow-2xl pulse-glow border-2 border-white/20 flex-1 sm:flex-none"
             >
               <Link to="/donation">
                 {t('Donate Now', 'आता दान करा')}
@@ -115,7 +119,10 @@ export const HeroSection = () => {
               asChild
               size="lg"
               variant="outline"
-              className="bg-ocean-deep backdrop-blur-md border-2 border-white text-white hover:bg-white hover:text-ocean-deep font-heading font-bold text-xl px-10 py-7 rounded-full transition-all"
+              // CHANGE 3: Same responsive sizing adjustments here
+              className="bg-ocean-deep backdrop-blur-md border-2 border-white text-white hover:bg-white hover:text-ocean-deep font-heading font-bold 
+                         text-sm px-5 py-6 sm:text-xl sm:px-10 sm:py-7 
+                         rounded-full transition-all flex-1 sm:flex-none"
             >
               <Link to="/about">
                 {t('Read More', 'अधिक वाचा')}
