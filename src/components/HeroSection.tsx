@@ -32,6 +32,7 @@ const SLIDER_IMAGES = [
   {
     id: 5,
     src: "/who.png",
+    mobileSrc: "who-mobile.jpg",
     alt: "Slide 5"
   },
   {

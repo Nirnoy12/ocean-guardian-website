@@ -51,7 +51,7 @@ const sponsors = [
     name: '',
     nameMarathi: '',
     logo: '/sponsors/sp7.webp',
-    website: '',
+    website: 'https://sites.google.com/view/incredible-martial-arts?usp=sharing',
   },
   {
     name: '',
